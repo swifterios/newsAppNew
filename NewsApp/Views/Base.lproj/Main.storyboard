@@ -23,7 +23,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="a41-8l-dfl">
+                                        <searchBar contentMode="redraw" placeholder="Find in downloaded news by title" translatesAutoresizingMaskIntoConstraints="NO" id="a41-8l-dfl">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
