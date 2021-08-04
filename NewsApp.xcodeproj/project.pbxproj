@@ -13,6 +13,7 @@
 		ECC62CA226BA7016002FA7C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC62CA026BA7016002FA7C5 /* Main.storyboard */; };
 		ECC62CA426BA7018002FA7C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECC62CA326BA7018002FA7C5 /* Assets.xcassets */; };
 		ECC62CA726BA7018002FA7C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC62CA526BA7018002FA7C5 /* LaunchScreen.storyboard */; };
+		ECC62CB526BA76CB002FA7C5 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC62CB426BA76CB002FA7C5 /* NewsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		ECC62CA326BA7018002FA7C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECC62CA626BA7018002FA7C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECC62CA826BA7018002FA7C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECC62CB426BA76CB002FA7C5 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				ECC62CAF26BA7094002FA7C5 /* NetworkManager */,
+				ECC62CB326BA76AC002FA7C5 /* Views */,
+				ECC62CB226BA70E8002FA7C5 /* Models */,
 				ECC62CB026BA70A3002FA7C5 /* Controllers */,
 				ECC62CB126BA70B2002FA7C5 /* App */,
 				ECC62CAE26BA7046002FA7C5 /* Resources */,
@@ -67,7 +71,6 @@
 		ECC62CAE26BA7046002FA7C5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				ECC62CA026BA7016002FA7C5 /* Main.storyboard */,
 				ECC62CA326BA7018002FA7C5 /* Assets.xcassets */,
 				ECC62CA526BA7018002FA7C5 /* LaunchScreen.storyboard */,
 				ECC62CA826BA7018002FA7C5 /* Info.plist */,
@@ -78,7 +81,6 @@
 		ECC62CAF26BA7094002FA7C5 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
-				ECC62CB226BA70E8002FA7C5 /* Models */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -105,6 +107,15 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		ECC62CB326BA76AC002FA7C5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ECC62CA026BA7016002FA7C5 /* Main.storyboard */,
+				ECC62CB426BA76CB002FA7C5 /* NewsTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 			files = (
 				ECC62C9F26BA7016002FA7C5 /* NewsViewController.swift in Sources */,
 				ECC62C9B26BA7016002FA7C5 /* AppDelegate.swift in Sources */,
+				ECC62CB526BA76CB002FA7C5 /* NewsTableViewCell.swift in Sources */,
 				ECC62C9D26BA7016002FA7C5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,7 +340,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NUMRL3MBS4;
-				INFOPLIST_FILE = NewsApp/Info.plist;
+				INFOPLIST_FILE = NewsApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -347,7 +359,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NUMRL3MBS4;
-				INFOPLIST_FILE = NewsApp/Info.plist;
+				INFOPLIST_FILE = NewsApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

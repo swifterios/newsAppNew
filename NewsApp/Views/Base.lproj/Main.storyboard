@@ -19,9 +19,26 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3G4-74-y3t">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="FCh-wG-N1f">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="a41-8l-dfl">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </searchBar>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="a41-8l-dfl" firstAttribute="top" secondItem="FCh-wG-N1f" secondAttribute="top" id="4mL-OE-a0o"/>
+                                        <constraint firstAttribute="trailing" secondItem="a41-8l-dfl" secondAttribute="trailing" id="67y-aD-K8a"/>
+                                        <constraint firstAttribute="bottom" secondItem="a41-8l-dfl" secondAttribute="bottom" id="MA6-yh-L21"/>
+                                        <constraint firstItem="a41-8l-dfl" firstAttribute="leading" secondItem="FCh-wG-N1f" secondAttribute="leading" id="znf-m8-OIS"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="306" id="gRG-FU-rmm">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="306"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="306" id="gRG-FU-rmm" customClass="NewsTableViewCell" customModule="NewsApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="68.5" width="414" height="306"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gRG-FU-rmm" id="f2s-yj-11Q">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="306"/>
@@ -33,7 +50,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="z7Q-u5-7cU">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="z7Q-u5-7cU" customClass="News">
                                                     <rect key="frame" x="0.0" y="34" width="414" height="241.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="le1-a1-uqq">
@@ -64,12 +81,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="3G4-74-y3t" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="MRB-Uo-cTu"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3G4-74-y3t" secondAttribute="trailing" id="YNY-9E-mRH"/>
-                            <constraint firstItem="3G4-74-y3t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eIh-zn-C2Q"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3G4-74-y3t" secondAttribute="bottom" id="jiA-2w-f0V"/>
+                            <constraint firstItem="3G4-74-y3t" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2eC-Gr-uF8"/>
+                            <constraint firstItem="3G4-74-y3t" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="btP-Fb-NPA"/>
+                            <constraint firstItem="3G4-74-y3t" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kgC-te-U46"/>
+                            <constraint firstItem="3G4-74-y3t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="r4I-s2-DnJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="newsTableView" destination="3G4-74-y3t" id="fXk-i7-Rck"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
