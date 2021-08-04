@@ -9,7 +9,7 @@ import UIKit
 
 class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    
+    var newsData: NewsModel?
 
     //MARK: - Outlets
     
@@ -20,6 +20,31 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         newsTableView.dataSource = self
         newsTableView.delegate = self
+        getLastNewsFromAPI()
+    }
+    
+    //MARK: - API funcs
+    
+    public func getLastNewsFromAPI() {
+        APIManager.shared.getLastNews { [weak self] result in
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case .success(let model):
+                    self?.newsData = model
+                    self?.updateNewsTableView()
+                case .failure(let error):
+                    print("Error: \(error)")
+                }
+            }
+        }
+    }
+    
+    //MARK: - Other funcs
+    
+    public func updateNewsTableView() {
+        DispatchQueue.main.async { [weak self] in
+            self?.newsTableView.reloadData()
+        }
     }
 
     //MARK: - TableView
@@ -33,7 +58,6 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell
     }
-
 }
 
 
