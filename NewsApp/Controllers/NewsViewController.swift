@@ -38,8 +38,6 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self?.newsTableView.isHidden = true
             }
         }
-        
-        self.updateNewsTableView()
     }
     
     //MARK: - Other funcs
