@@ -11,7 +11,8 @@ import UIKit
 class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var newsData: NewsModel?
-
+    var currentPage = 2
+    
     //MARK: - Outlets
     
     @IBOutlet weak var newsTableView: UITableView!
@@ -36,7 +37,21 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self?.updateNewsTableView()
             case .failure(let error):
                 print("Error: \(error)")
-                self?.newsTableView.isHidden = true
+                DispatchQueue.main.async { [weak self] in
+                    self?.newsTableView.isHidden = true
+                }
+            }
+        }
+    }
+    
+    func getNewsByPage(page: Int) {
+        APIManager.shared.getNewsByPage(page: currentPage) { [weak self] result in
+            switch result {
+            case .success(let model):
+                self?.newsData?.articles.append(contentsOf: model.articles)
+                self?.updateNewsTableView()
+            case .failure(let error):
+                print("Error: \(error)")
             }
         }
     }
@@ -64,9 +79,16 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.newsImage.sd_setImage(with: URL(string: imageUrl), completed: nil)
         }
         
-        
-        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 2 == newsData?.articles.count {
+            if currentPage <= 7 {
+                getNewsByPage(page: currentPage)
+                currentPage += 1
+            }
+        }
     }
 }
 

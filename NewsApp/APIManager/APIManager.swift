@@ -29,6 +29,7 @@ final class APIManager {
     public func getNewsByPage(page: Int,
                                completion: @escaping (Result<NewsModel, Error>) -> Void) {
         var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
         urlComponents.host = Constants.host
         urlComponents.path = Constants.apiPath
         urlComponents.queryItems = [URLQueryItem(name: "apiKey", value: Constants.apiKey),
