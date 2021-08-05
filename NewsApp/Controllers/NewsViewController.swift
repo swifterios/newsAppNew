@@ -5,6 +5,7 @@
 //  Created by Владислав on 04.08.2021.
 //
 
+import SDWebImage
 import UIKit
 
 class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -56,8 +57,14 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = newsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewsTableViewCell
-        cell.newsTitle.text = newsData?.articles[indexPath.row].title
-        cell.newsDesc.text = newsData?.articles[indexPath.row].description
+        let data = newsData?.articles[indexPath.row]
+        cell.newsTitle.text = data?.title
+        cell.newsDesc.text = data?.description
+        if let imageUrl = data?.urlToImage, data?.urlToImage != nil {
+            cell.newsImage.sd_setImage(with: URL(string: imageUrl), completed: nil)
+        }
+        
+        
         
         return cell
     }

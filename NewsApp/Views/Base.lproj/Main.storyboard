@@ -45,23 +45,24 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxc-TF-MGH">
-                                                    <rect key="frame" x="5" y="130" width="404" height="24"/>
+                                                    <rect key="frame" x="5" y="180" width="404" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="le1-a1-uqq">
-                                                    <rect key="frame" x="5" y="164" width="404" height="122"/>
+                                                    <rect key="frame" x="5" y="214" width="404" height="72"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="z7Q-u5-7cU">
-                                                    <rect key="frame" x="0.0" y="21" width="414" height="97.5"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="z7Q-u5-7cU">
+                                                    <rect key="frame" x="0.0" y="21" width="414" height="147.5"/>
                                                     <color key="tintColor" red="0.082352943720000002" green="0.062745101750000004" blue="0.1058823466" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="BTl-2D-UPd"/>
+                                                        <constraint firstAttribute="height" constant="150" id="BTl-2D-UPd"/>
                                                     </constraints>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -79,6 +80,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="newsDesc" destination="le1-a1-uqq" id="qKT-pm-fT2"/>
+                                            <outlet property="newsImage" destination="z7Q-u5-7cU" id="s4D-xc-hZO"/>
                                             <outlet property="newsTitle" destination="uxc-TF-MGH" id="z74-5B-9m7"/>
                                         </connections>
                                     </tableViewCell>
