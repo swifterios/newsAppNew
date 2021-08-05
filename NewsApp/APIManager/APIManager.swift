@@ -12,8 +12,10 @@ final class APIManager {
     static let shared = APIManager()
     
     struct Constants {
-        static let apiURL = "https://newsapi.org/v2/everything"
+        static let apiPath = "/v2/everything"
+        static let host = "newsapi.org"
         static let apiKey = "1084ffff938444e0bc3f5b228ab10037"
+        static let sources = "cnn"
     }
     
     //MARK: - Enums
@@ -27,10 +29,11 @@ final class APIManager {
     public func getNewsByPage(page: Int,
                                completion: @escaping (Result<NewsModel, Error>) -> Void) {
         var urlComponents = URLComponents()
-        urlComponents.path = Constants.apiURL
+        urlComponents.host = Constants.host
+        urlComponents.path = Constants.apiPath
         urlComponents.queryItems = [URLQueryItem(name: "apiKey", value: Constants.apiKey),
                                     URLQueryItem(name: "page", value: String(page)),
-                                    URLQueryItem(name: "sources", value: "cnn")]
+                                    URLQueryItem(name: "sources", value: Constants.sources)]
         guard let url = urlComponents.url else {
             return
         }
@@ -57,7 +60,9 @@ final class APIManager {
     // Get news for the last 24h
     public func getLastNews(completion: @escaping (Result<NewsModel, Error>) -> Void) {
         var urlComponents = URLComponents()
-        urlComponents.path = Constants.apiURL
+        urlComponents.scheme = "https"
+        urlComponents.host = Constants.host
+        urlComponents.path = Constants.apiPath
         
         let currentDate = Date()
         let secondsInDay = 24 * 3600
@@ -70,7 +75,8 @@ final class APIManager {
         
         urlComponents.queryItems = [URLQueryItem(name: "apiKey", value: Constants.apiKey),
                                     URLQueryItem(name: "from", value: pastDayFormatted),
-                                    URLQueryItem(name: "to", value: currentDateFormatted)]
+                                    URLQueryItem(name: "to", value: currentDateFormatted),
+                                    URLQueryItem(name: "sources", value: Constants.sources)]
         
         guard let url = urlComponents.url else {
             return

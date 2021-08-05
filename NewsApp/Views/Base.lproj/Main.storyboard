@@ -74,6 +74,10 @@
                                                 <constraint firstItem="z7Q-u5-7cU" firstAttribute="top" secondItem="uxc-TF-MGH" secondAttribute="bottom" constant="5" id="vka-VG-ge9"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="newsDesc" destination="le1-a1-uqq" id="qKT-pm-fT2"/>
+                                            <outlet property="newsTitle" destination="uxc-TF-MGH" id="z74-5B-9m7"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

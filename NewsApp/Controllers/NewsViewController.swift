@@ -18,30 +18,33 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getLastNewsFromAPI()
+        
         newsTableView.dataSource = self
         newsTableView.delegate = self
-        getLastNewsFromAPI()
+
     }
     
     //MARK: - API funcs
     
-    public func getLastNewsFromAPI() {
+    func getLastNewsFromAPI() {
         APIManager.shared.getLastNews { [weak self] result in
-            DispatchQueue.main.async { [weak self] in
-                switch result {
-                case .success(let model):
-                    self?.newsData = model
-                    self?.updateNewsTableView()
-                case .failure(let error):
-                    print("Error: \(error)")
-                }
+            switch result {
+            case .success(let model):
+                self?.newsData = model
+                self?.updateNewsTableView()
+            case .failure(let error):
+                print("Error: \(error)")
+                self?.newsTableView.isHidden = true
             }
         }
+        
+        self.updateNewsTableView()
     }
     
     //MARK: - Other funcs
     
-    public func updateNewsTableView() {
+    func updateNewsTableView() {
         DispatchQueue.main.async { [weak self] in
             self?.newsTableView.reloadData()
         }
@@ -50,11 +53,13 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //MARK: - TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return newsData?.articles.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = newsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewsTableViewCell
+        cell.newsTitle.text = newsData?.articles[indexPath.row].title
+        cell.newsDesc.text = newsData?.articles[indexPath.row].description
         
         return cell
     }
