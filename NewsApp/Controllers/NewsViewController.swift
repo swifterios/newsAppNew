@@ -17,6 +17,12 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var newsTableView: UITableView!
     
+    let refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshNews(sender:)), for: .valueChanged)
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +30,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         newsTableView.dataSource = self
         newsTableView.delegate = self
-
+        
+        newsTableView.refreshControl = refreshControl
     }
     
     //MARK: - API funcs
@@ -62,6 +69,14 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         DispatchQueue.main.async { [weak self] in
             self?.newsTableView.reloadData()
         }
+    }
+    
+    @objc func refreshNews(sender: UIRefreshControl) {
+        newsData = nil
+        currentPage = 2
+        getLastNewsFromAPI()
+        
+        sender.endRefreshing()
     }
 
     //MARK: - TableView
