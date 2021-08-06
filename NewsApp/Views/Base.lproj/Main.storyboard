@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3G4-74-y3t">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="FCh-wG-N1f">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -36,6 +36,13 @@
                                         <constraint firstItem="a41-8l-dfl" firstAttribute="leading" secondItem="FCh-wG-N1f" secondAttribute="leading" id="znf-m8-OIS"/>
                                     </constraints>
                                 </view>
+                                <label key="tableFooterView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End of news" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5l1-aO-4SM">
+                                    <rect key="frame" x="0.0" y="399.00000034679067" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="306" id="gRG-FU-rmm" customClass="NewsTableViewCell" customModule="NewsApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="68.5" width="414" height="306"/>
@@ -91,12 +98,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3G4-74-y3t" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2eC-Gr-uF8"/>
-                            <constraint firstItem="3G4-74-y3t" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="btP-Fb-NPA"/>
+                            <constraint firstAttribute="bottom" secondItem="3G4-74-y3t" secondAttribute="bottom" id="Ubb-lW-RjG"/>
                             <constraint firstItem="3G4-74-y3t" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kgC-te-U46"/>
                             <constraint firstItem="3G4-74-y3t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="r4I-s2-DnJ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="endLabel" destination="5l1-aO-4SM" id="qbn-K4-tPp"/>
                         <outlet property="newsTableView" destination="3G4-74-y3t" id="fXk-i7-Rck"/>
                     </connections>
                 </viewController>

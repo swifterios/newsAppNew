@@ -16,6 +16,13 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //MARK: - Outlets
     
     @IBOutlet weak var newsTableView: UITableView!
+    @IBOutlet weak var endLabel: UILabel!
+    
+    let refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshNews(sender:)), for: .valueChanged)
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +31,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         newsTableView.dataSource = self
         newsTableView.delegate = self
-
+        
+        newsTableView.refreshControl = refreshControl
     }
     
     //MARK: - API funcs
@@ -63,6 +71,27 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self?.newsTableView.reloadData()
         }
     }
+    
+    func displayEndLabel() {
+        DispatchQueue.main.async { [weak self] in
+            self?.endLabel.isHidden = false
+        }
+    }
+    
+    func hideEndLabel() {
+        DispatchQueue.main.async { [weak self] in
+            self?.endLabel.isHidden = true
+        }
+    }
+    
+    @objc func refreshNews(sender: UIRefreshControl) {
+        newsData = nil
+        currentPage = 2
+        getLastNewsFromAPI()
+        hideEndLabel()
+        
+        sender.endRefreshing()
+    }
 
     //MARK: - TableView
     
@@ -87,6 +116,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if currentPage <= 7 {
                 getNewsByPage(page: currentPage)
                 currentPage += 1
+            } else {
+                displayEndLabel()
             }
         }
     }
