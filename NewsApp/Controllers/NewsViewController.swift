@@ -11,7 +11,7 @@ import UIKit
 class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var newsData: NewsModel?
-    var currentPage = 2
+    var currentDay = 0
     
     //MARK: - Outlets
     
@@ -27,7 +27,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getLastNewsFromAPI()
+        getLastNewsByDay(day: currentDay)
         
         newsTableView.dataSource = self
         newsTableView.delegate = self
@@ -37,29 +37,22 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     //MARK: - API funcs
     
-    func getLastNewsFromAPI() {
-        APIManager.shared.getLastNews { [weak self] result in
+    func getLastNewsByDay(day: Int) {
+        APIManager.shared.getLastNewsByDay(day: currentDay) { [weak self] result in
             switch result {
             case .success(let model):
-                self?.newsData = model
+                if self?.newsData != nil {
+                    self?.newsData?.articles.append(contentsOf: model.articles)
+                } else {
+                    self?.newsData = model
+                }
+                
                 self?.updateNewsTableView()
             case .failure(let error):
                 print("Error: \(error)")
                 DispatchQueue.main.async { [weak self] in
                     self?.newsTableView.isHidden = true
                 }
-            }
-        }
-    }
-    
-    func getNewsByPage(page: Int) {
-        APIManager.shared.getNewsByPage(page: currentPage) { [weak self] result in
-            switch result {
-            case .success(let model):
-                self?.newsData?.articles.append(contentsOf: model.articles)
-                self?.updateNewsTableView()
-            case .failure(let error):
-                print("Error: \(error)")
             }
         }
     }
@@ -86,8 +79,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func refreshNews(sender: UIRefreshControl) {
         newsData = nil
-        currentPage = 2
-        getLastNewsFromAPI()
+        currentDay = 0
+        getLastNewsByDay(day: currentDay)
         hideEndLabel()
         
         sender.endRefreshing()
@@ -113,9 +106,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row + 2 == newsData?.articles.count {
-            if currentPage <= 7 {
-                getNewsByPage(page: currentPage)
-                currentPage += 1
+            if currentDay <= 7 {
+                getLastNewsByDay(day: currentDay)
+                currentDay += 1
             } else {
                 displayEndLabel()
             }
