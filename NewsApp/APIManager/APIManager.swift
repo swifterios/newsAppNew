@@ -26,40 +26,10 @@ final class APIManager {
     
     //MARK: - API funcs
     
-    public func getNewsByPage(page: Int,
-                               completion: @escaping (Result<NewsModel, Error>) -> Void) {
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = Constants.host
-        urlComponents.path = Constants.apiPath
-        urlComponents.queryItems = [URLQueryItem(name: "apiKey", value: Constants.apiKey),
-                                    URLQueryItem(name: "page", value: String(page)),
-                                    URLQueryItem(name: "sources", value: Constants.sources)]
-        guard let url = urlComponents.url else {
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data, error == nil else {
-                completion(.failure(APIError.failedToGetNews))
-                return
-            }
-            
-            do {
-                let result = try JSONDecoder().decode(NewsModel.self, from: data)
-                print(result)
-                completion(.success(result))
-            }
-            catch {
-                completion(.failure(error))
-            }
-        }
-        task.resume()
-    }
     
-    
-    // Get news for the last 24h
-    public func getLastNews(completion: @escaping (Result<NewsModel, Error>) -> Void) {
+    // Get news by day
+    public func getLastNewsByDay(day: Int,
+                                 completion: @escaping (Result<NewsModel, Error>) -> Void) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = Constants.host
@@ -67,12 +37,15 @@ final class APIManager {
         
         let currentDate = Date()
         let secondsInDay = 24 * 3600
-        let pastDay = currentDate.addingTimeInterval(TimeInterval(-secondsInDay))
+        let minusSecs = day * -secondsInDay
+        
+        let countedCurrentDate = currentDate.addingTimeInterval(TimeInterval(day * minusSecs))
+        let pastDayCounted = currentDate.addingTimeInterval(TimeInterval((day - 1) * minusSecs))
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YY-MM-dd'T'HH:mm" // 2021-08-04T14:06
-        let currentDateFormatted = dateFormatter.string(from: currentDate)
-        let pastDayFormatted = dateFormatter.string(from: pastDay)
+        let currentDateFormatted = dateFormatter.string(from: countedCurrentDate)
+        let pastDayFormatted = dateFormatter.string(from: pastDayCounted)
         
         urlComponents.queryItems = [URLQueryItem(name: "apiKey", value: Constants.apiKey),
                                     URLQueryItem(name: "from", value: pastDayFormatted),
