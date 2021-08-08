@@ -37,10 +37,9 @@ final class APIManager {
         
         let currentDate = Date()
         let secondsInDay = 24 * 3600
-        let minusSecs = day * -secondsInDay
         
-        let countedCurrentDate = currentDate.addingTimeInterval(TimeInterval(day * minusSecs))
-        let pastDayCounted = currentDate.addingTimeInterval(TimeInterval((day - 1) * minusSecs))
+        let countedCurrentDate = currentDate.addingTimeInterval(TimeInterval(day * -secondsInDay))
+        let pastDayCounted = countedCurrentDate.addingTimeInterval(TimeInterval(-secondsInDay))
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YY-MM-dd'T'HH:mm" // 2021-08-04T14:06
