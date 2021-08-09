@@ -90,6 +90,14 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         sender.endRefreshing()
     }
     
+    @IBAction func addToSaved(_ sender: UIButton) {
+        guard let article = newsData?.articles[sender.tag] else {
+            return
+        }
+        
+        DB.shared.addToDB(item: article)
+        
+    }
     
 
     //MARK: - TableView
@@ -105,6 +113,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let data = newsData?.articles[indexPath.row]
         cell.newsTitle.text = data?.title
         cell.newsDesc.text = data?.description
+        cell.saveButton.tag = indexPath.row
         if let imageUrl = data?.urlToImage, data?.urlToImage != nil {
             cell.newsImage.sd_setImage(with: URL(string: imageUrl), completed: nil)
         }

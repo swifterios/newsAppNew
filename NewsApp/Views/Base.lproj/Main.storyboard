@@ -73,6 +73,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="tintColor" systemColor="systemYellowColor"/>
                                                     <state key="normal" image="star" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="addToSaved:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P02-Ww-Lfa"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="le1-a1-uqq">
                                                     <rect key="frame" x="25" y="209" width="374" height="30"/>
@@ -113,6 +116,7 @@
                                             <outlet property="newsDesc" destination="le1-a1-uqq" id="qKT-pm-fT2"/>
                                             <outlet property="newsImage" destination="z7Q-u5-7cU" id="s4D-xc-hZO"/>
                                             <outlet property="newsTitle" destination="uxc-TF-MGH" id="z74-5B-9m7"/>
+                                            <outlet property="saveButton" destination="NRf-oF-Eum" id="nDx-3P-QU7"/>
                                             <outlet property="showmoreButton" destination="cOa-Ck-hOK" id="y3n-od-mMc"/>
                                         </connections>
                                     </tableViewCell>

@@ -14,8 +14,11 @@ final class DB {
     
     let realm = try! Realm()
 
-    func getInfo() {
-        print(Realm.Configuration.defaultConfiguration.fileURL)
+    
+    public func addToDB(item: Article) {
+        try! realm.write {
+            
+        }
     }
     
     
