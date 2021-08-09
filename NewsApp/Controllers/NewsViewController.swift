@@ -31,8 +31,6 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         getLastNewsByDay(day: currentDay)
         
-        DB.shared.getInfo()
-        
         newsTableView.dataSource = self
         newsTableView.delegate = self
         
