@@ -23,17 +23,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" placeholder="Find in downloaded news by title" translatesAutoresizingMaskIntoConstraints="NO" id="a41-8l-dfl">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </searchBar>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kJ2-re-23u">
+                                            <rect key="frame" x="5" y="5" width="404" height="35"/>
+                                            <segments>
+                                                <segment title="News"/>
+                                                <segment title="Saved"/>
+                                            </segments>
+                                        </segmentedControl>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstItem="a41-8l-dfl" firstAttribute="top" secondItem="FCh-wG-N1f" secondAttribute="top" id="4mL-OE-a0o"/>
-                                        <constraint firstAttribute="trailing" secondItem="a41-8l-dfl" secondAttribute="trailing" id="67y-aD-K8a"/>
-                                        <constraint firstAttribute="bottom" secondItem="a41-8l-dfl" secondAttribute="bottom" id="MA6-yh-L21"/>
-                                        <constraint firstItem="a41-8l-dfl" firstAttribute="leading" secondItem="FCh-wG-N1f" secondAttribute="leading" id="znf-m8-OIS"/>
+                                        <constraint firstItem="kJ2-re-23u" firstAttribute="leading" secondItem="FCh-wG-N1f" secondAttribute="leading" constant="5" id="3Hk-IR-ge7"/>
+                                        <constraint firstAttribute="bottom" secondItem="kJ2-re-23u" secondAttribute="bottom" constant="5" id="mYb-Hr-tpP"/>
+                                        <constraint firstAttribute="trailing" secondItem="kJ2-re-23u" secondAttribute="trailing" constant="5" id="nRx-Gm-hfQ"/>
+                                        <constraint firstItem="kJ2-re-23u" firstAttribute="top" secondItem="FCh-wG-N1f" secondAttribute="top" constant="5" id="yXk-il-maM"/>
                                     </constraints>
                                 </view>
                                 <label key="tableFooterView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End of news" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5l1-aO-4SM">
@@ -106,6 +109,7 @@
                     <connections>
                         <outlet property="endLabel" destination="5l1-aO-4SM" id="qbn-K4-tPp"/>
                         <outlet property="newsTableView" destination="3G4-74-y3t" id="fXk-i7-Rck"/>
+                        <outlet property="segmentedControl" destination="kJ2-re-23u" id="8wL-4n-6Bc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -17,6 +17,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var newsTableView: UITableView!
     @IBOutlet weak var endLabel: UILabel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     
     let refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()

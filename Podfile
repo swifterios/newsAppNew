@@ -5,5 +5,6 @@ target 'NewsApp' do
   use_frameworks!
   
   pod 'SDWebImage'
+  pod 'RealmSwift'
 
 end
