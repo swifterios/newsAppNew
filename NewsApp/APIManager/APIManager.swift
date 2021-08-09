@@ -63,7 +63,6 @@ final class APIManager {
             
             do {
                 let result = try JSONDecoder().decode(NewsModel.self, from: data)
-                print(result)
                 completion(.success(result))
             }
             catch {

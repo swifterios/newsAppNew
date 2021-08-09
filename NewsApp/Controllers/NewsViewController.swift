@@ -31,6 +31,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         getLastNewsByDay(day: currentDay)
         
+        DB.shared.getInfo()
+        
         newsTableView.dataSource = self
         newsTableView.delegate = self
         
@@ -87,6 +89,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         sender.endRefreshing()
     }
+    
+    
 
     //MARK: - TableView
     
@@ -95,6 +99,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let segmentIndex = segmentedControl.selectedSegmentIndex
+
         let cell = newsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewsTableViewCell
         let data = newsData?.articles[indexPath.row]
         cell.newsTitle.text = data?.title

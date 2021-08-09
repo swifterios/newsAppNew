@@ -13,13 +13,22 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var newsTitle: UILabel!
     @IBOutlet weak var newsDesc: UILabel!
     @IBOutlet weak var newsImage: UIImageView!
+    @IBOutlet weak var showmoreButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
     }
 
+    @IBAction func showmoreClicked(_ sender: UIButton) {
+        newsDesc.numberOfLines = 3
+        self.updateConstraints()
+        self.updateConstraintsIfNeeded()
+        print(newsDesc.text)
+    }
 }
