@@ -94,6 +94,11 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         DB.shared.addToDB(item: article)
+        //DB.shared.getInfo()
+        sender.setImage(UIImage(systemName: "star.fill"), for: .normal)
+    }
+    
+    @IBAction func removeFromDB() {
         
     }
     
@@ -112,6 +117,17 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.newsTitle.text = data?.title
         cell.newsDesc.text = data?.description
         cell.saveButton.tag = indexPath.row
+        
+        guard let url = data?.url else {
+            return cell
+        }
+        
+        if DB.shared.isInDB(url: url) {
+            cell.saveButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            cell.saveButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }
+        
         if let imageUrl = data?.urlToImage, data?.urlToImage != nil {
             cell.newsImage.sd_setImage(with: URL(string: imageUrl), completed: nil)
         }
