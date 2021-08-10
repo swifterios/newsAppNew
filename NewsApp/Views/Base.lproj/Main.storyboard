@@ -29,6 +29,9 @@
                                                 <segment title="News"/>
                                                 <segment title="Saved"/>
                                             </segments>
+                                            <connections>
+                                                <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="OoV-7P-Kd3"/>
+                                            </connections>
                                         </segmentedControl>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -73,9 +76,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="tintColor" systemColor="systemYellowColor"/>
                                                     <state key="normal" image="star" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="addToSaved:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P02-Ww-Lfa"/>
-                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="le1-a1-uqq">
                                                     <rect key="frame" x="25" y="209" width="374" height="30"/>

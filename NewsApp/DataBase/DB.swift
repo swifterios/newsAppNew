@@ -40,6 +40,12 @@ final class DB {
         }
     }
     
+    public func getFromDB() -> Results<ArticleDB> {
+        let results = realm.objects(ArticleDB.self)
+        
+        return results
+    }
+    
     public func isInDB(url: String) -> Bool {
         let results = realm.objects(ArticleDB.self).filter("url = '\(url)'")
         return results.count > 0
