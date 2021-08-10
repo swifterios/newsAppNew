@@ -29,6 +29,17 @@ final class DB {
         }
     }
     
+    public func removeFromDB(item: Article) {
+        guard let url = item.url else {
+            return
+        }
+        
+        let results = realm.objects(ArticleDB.self).filter("url = '\(url)'")
+        try! realm.write {
+            realm.delete(results)
+        }
+    }
+    
     public func isInDB(url: String) -> Bool {
         let results = realm.objects(ArticleDB.self).filter("url = '\(url)'")
         return results.count > 0

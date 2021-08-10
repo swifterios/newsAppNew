@@ -94,12 +94,23 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         DB.shared.addToDB(item: article)
-        //DB.shared.getInfo()
+
         sender.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        sender.removeTarget(nil, action: nil, for: .allEvents)
+        sender.addTarget(self, action: #selector(removeFromSaved(_:)), for: .touchUpInside)
+        
     }
     
-    @IBAction func removeFromDB() {
+    @objc func removeFromSaved(_ sender: UIButton) {
+        guard let article = newsData?.articles[sender.tag] else {
+            return
+        }
         
+        DB.shared.removeFromDB(item: article)
+        
+        sender.setImage(UIImage(systemName: "star"), for: .normal)
+        sender.removeTarget(nil, action: nil, for: .allEvents)
+        sender.addTarget(self, action: #selector(addToSaved(_:)), for: .touchUpInside)
     }
     
 
@@ -112,6 +123,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let segmentIndex = segmentedControl.selectedSegmentIndex
 
+        
+        
         let cell = newsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewsTableViewCell
         let data = newsData?.articles[indexPath.row]
         cell.newsTitle.text = data?.title
@@ -123,9 +136,14 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         if DB.shared.isInDB(url: url) {
+            
             cell.saveButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.saveButton.addTarget(self, action: #selector(removeFromSaved(_:)), for: .touchUpInside)
+            
         } else {
             cell.saveButton.setImage(UIImage(systemName: "star"), for: .normal)
+            cell.saveButton.addTarget(self, action: #selector(addToSaved(_:)), for: .touchUpInside)
+            
         }
         
         if let imageUrl = data?.urlToImage, data?.urlToImage != nil {
