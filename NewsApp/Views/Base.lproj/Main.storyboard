@@ -20,11 +20,11 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="FCh-wG-N1f">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="107"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kJ2-re-23u">
-                                            <rect key="frame" x="5" y="5" width="404" height="35"/>
+                                            <rect key="frame" x="0.0" y="61" width="414" height="42"/>
                                             <segments>
                                                 <segment title="News"/>
                                                 <segment title="Saved"/>
@@ -33,17 +33,24 @@
                                                 <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="OoV-7P-Kd3"/>
                                             </connections>
                                         </segmentedControl>
+                                        <searchBar contentMode="redraw" verticalHuggingPriority="251" placeholder="Search in saved by title" translatesAutoresizingMaskIntoConstraints="NO" id="Lob-fm-Jid">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </searchBar>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstItem="kJ2-re-23u" firstAttribute="leading" secondItem="FCh-wG-N1f" secondAttribute="leading" constant="5" id="3Hk-IR-ge7"/>
-                                        <constraint firstAttribute="bottom" secondItem="kJ2-re-23u" secondAttribute="bottom" constant="5" id="mYb-Hr-tpP"/>
-                                        <constraint firstAttribute="trailing" secondItem="kJ2-re-23u" secondAttribute="trailing" constant="5" id="nRx-Gm-hfQ"/>
-                                        <constraint firstItem="kJ2-re-23u" firstAttribute="top" secondItem="FCh-wG-N1f" secondAttribute="top" constant="5" id="yXk-il-maM"/>
+                                        <constraint firstAttribute="trailing" secondItem="Lob-fm-Jid" secondAttribute="trailing" id="0sf-f9-GBo"/>
+                                        <constraint firstItem="Lob-fm-Jid" firstAttribute="top" secondItem="FCh-wG-N1f" secondAttribute="top" id="3I0-so-JSo"/>
+                                        <constraint firstAttribute="bottom" secondItem="kJ2-re-23u" secondAttribute="bottom" constant="5" id="AIh-qL-A7u"/>
+                                        <constraint firstAttribute="trailing" secondItem="kJ2-re-23u" secondAttribute="trailing" id="Kpx-ea-5Dh"/>
+                                        <constraint firstItem="kJ2-re-23u" firstAttribute="top" secondItem="Lob-fm-Jid" secondAttribute="bottom" constant="10" id="OoS-P7-Wfb"/>
+                                        <constraint firstItem="kJ2-re-23u" firstAttribute="leading" secondItem="FCh-wG-N1f" secondAttribute="leading" id="VHc-9X-uw7"/>
+                                        <constraint firstItem="Lob-fm-Jid" firstAttribute="leading" secondItem="FCh-wG-N1f" secondAttribute="leading" id="XxL-TF-xqU"/>
                                     </constraints>
                                 </view>
                                 <label key="tableFooterView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End of news" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5l1-aO-4SM">
-                                    <rect key="frame" x="0.0" y="399.00000034679067" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="462.00000034679067" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
@@ -51,7 +58,7 @@
                                 </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="306" id="gRG-FU-rmm" customClass="NewsTableViewCell" customModule="NewsApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="68.5" width="414" height="306"/>
+                                        <rect key="frame" x="0.0" y="131.5" width="414" height="306"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gRG-FU-rmm" id="f2s-yj-11Q">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="306"/>
