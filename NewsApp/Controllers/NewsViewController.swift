@@ -9,10 +9,12 @@ import SDWebImage
 import RealmSwift
 import UIKit
 
-class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+    
 
     var newsData: NewsModel?
     var dbNewsData: Results<ArticleDB>?
+    var filteredData: Article!
     var currentDay = 0
     
     //MARK: - Outlets
@@ -20,6 +22,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var newsTableView: UITableView!
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     let refreshControl: UIRefreshControl = {
@@ -37,6 +40,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         newsTableView.dataSource = self
         newsTableView.delegate = self
+        searchBar.delegate = self
         
         newsTableView.refreshControl = refreshControl
     }
@@ -82,6 +86,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self?.endLabel.isHidden = true
         }
     }
+    
+    //MARK: - Objc
     
     @objc func refreshNews(sender: UIRefreshControl) {
         newsData = nil
@@ -162,9 +168,13 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    //MARK: - IBA
+    
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         self.updateNewsTableView()
     }
+    
+    
     
 
     //MARK: - TableView
@@ -244,6 +254,23 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 displayEndLabel()
             }
         }
+    }
+    
+    //MARK: - Search
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        var filteredDatas = [filteredData]
+        
+        guard let dbNewsDataLocal = dbNewsData else {
+            return
+        }
+        
+//        for item in dbNewsDataLocal {
+//            if ((item.title?.lowercased().contains(searchText.lowercased())) != nil) {
+//                filteredDatas.append(item)
+//            }
+//        }
     }
 }
 

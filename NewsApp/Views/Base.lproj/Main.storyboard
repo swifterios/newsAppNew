@@ -142,6 +142,7 @@
                     <connections>
                         <outlet property="endLabel" destination="5l1-aO-4SM" id="qbn-K4-tPp"/>
                         <outlet property="newsTableView" destination="3G4-74-y3t" id="fXk-i7-Rck"/>
+                        <outlet property="searchBar" destination="Lob-fm-Jid" id="96Z-CP-6eT"/>
                         <outlet property="segmentedControl" destination="kJ2-re-23u" id="8wL-4n-6Bc"/>
                     </connections>
                 </viewController>

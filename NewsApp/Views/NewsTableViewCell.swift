@@ -17,6 +17,7 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var showmoreButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
