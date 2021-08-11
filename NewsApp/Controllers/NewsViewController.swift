@@ -124,30 +124,33 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func addToSaved(_ sender: UIButton) {
         let segmentIndex = segmentedControl.selectedSegmentIndex
-        
         guard let article = newsData?.articles[sender.tag] else {
             return
         }
         
+        guard let dbNewsDataLocal = dbNewsData else {
+            return
+        }
         
         if segmentIndex == 0 {
-            guard let article = newsData?.articles[sender.tag] else {
-                return
-            }
+
             
             DB.shared.addToDB(item: article)
         } else {
-            guard let dbNewsDataLocal = dbNewsData else {
+
+            var article = Article()
+            let index = dbNewsDataLocal.firstIndex(where: { $0.url == article.url })
+            
+            guard let indexLocal = index else {
                 return
             }
-            var article = Article()
             
-            article.author = dbNewsDataLocal[sender.tag].author
-            article.description = dbNewsDataLocal[sender.tag].newsDescription
-            article.publishedAt = dbNewsDataLocal[sender.tag].publishedAt
-            article.title = dbNewsDataLocal[sender.tag].title
-            article.url = dbNewsDataLocal[sender.tag].url
-            article.urlToImage = dbNewsDataLocal[sender.tag].urlToImage
+            article.author = dbNewsDataLocal[indexLocal].author
+            article.description = dbNewsDataLocal[indexLocal].newsDescription
+            article.publishedAt = dbNewsDataLocal[indexLocal].publishedAt
+            article.title = dbNewsDataLocal[indexLocal].title
+            article.url = dbNewsDataLocal[indexLocal].url
+            article.urlToImage = dbNewsDataLocal[indexLocal].urlToImage
 
             DB.shared.addToDB(item: article)
         }
