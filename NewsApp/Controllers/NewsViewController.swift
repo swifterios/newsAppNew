@@ -14,7 +14,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     var newsData: NewsModel?
     var dbNewsData: Results<ArticleDB>?
-    var filteredData: Article!
+    var filteredData: Results<ArticleDB>!
     var currentDay = 0
     
     //MARK: - Outlets
@@ -260,17 +260,18 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        var filteredDatas = [filteredData]
-        
         guard let dbNewsDataLocal = dbNewsData else {
             return
         }
         
-//        for item in dbNewsDataLocal {
-//            if ((item.title?.lowercased().contains(searchText.lowercased())) != nil) {
-//                filteredDatas.append(item)
-//            }
-//        }
+        if searchText == "" {
+            dbNewsData = DB.shared.getFromDB()
+        } else {
+            segmentedControl.selectedSegmentIndex = 1
+            
+            dbNewsData = dbNewsDataLocal.filter("title CONTAINS %@", searchText)
+        }
+        self.updateNewsTableView()
     }
 }
 
