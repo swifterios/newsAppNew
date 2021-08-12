@@ -88,7 +88,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //MARK: - Objc
-    
+
     @objc func refreshNews(sender: UIRefreshControl) {
         newsData = nil
         dbNewsData = nil
@@ -102,7 +102,6 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func removeFromSaved(_ sender: UIButton) {
         let segmentIndex = segmentedControl.selectedSegmentIndex
-        
         if segmentIndex == 0 {
             guard let article = newsData?.articles[sender.tag] else {
                 return
@@ -174,9 +173,6 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.updateNewsTableView()
     }
     
-    
-    
-
     //MARK: - TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -242,6 +238,10 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         cell.newsImage.sd_setImage(with: URL(string: urlToImage), completed: nil)
 
+        
+        newsTableView.beginUpdates()
+        newsTableView.endUpdates()
+        
         return cell
     }
     

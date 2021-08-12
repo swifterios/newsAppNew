@@ -27,12 +27,9 @@ class NewsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
-
-    @IBAction func showmoreClicked(_ sender: UIButton) {
-        newsDesc.numberOfLines = 3
-        self.updateConstraints()
-        self.updateConstraintsIfNeeded()
-        print(newsDesc.text)
-    }
     
+    
+    @IBAction func showMoreClicked(_ sender: UIButton) {
+        newsDesc.numberOfLines = 0
+    }
 }
