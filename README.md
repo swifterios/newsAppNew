@@ -1,6 +1,6 @@
 # newsAppNew
 
-![](https://i.yapx.ru/Nq67B.mp4)
+![](https://imgur.com/a/Hn1Rvl9)
 
 
 
