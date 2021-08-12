@@ -1,6 +1,6 @@
 # newsAppNew
 
-![https://yapx.ru/v/Nq66n](newsApp.gif)
+![](https://i.yapx.ru/Nq67B.mp4)
 
 
 
