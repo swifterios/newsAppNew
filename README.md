@@ -1,6 +1,6 @@
 # newsAppNew
 
-![](https://imgur.com/a/Hn1Rvl9)
+![](https://i.imgur.com/yQyj1VT.gif)
 
 
 
