@@ -23,8 +23,6 @@
 
 <img src="https://i.imgur.com/R4cc9nZ.png" width="200" />
 
-<img src="https://media.giphy.com/media/hz0ZEfVYw6K3WNRcW2/giphy.gif" width="200" />
-
 Ссылка на демо - https://media.giphy.com/media/hz0ZEfVYw6K3WNRcW2/giphy.gif (7FPS)
 
 
