@@ -13,16 +13,17 @@
 
 Общий вид приложения:
 
-![newsimg](https://i.imgur.com/grIT7G3.png "Основной экран приложения")
+<img src="https://i.imgur.com/grIT7G3.png" width="200" />
 
 Добавление в избранные, нажатием кнопки
-![newsimg](https://i.imgur.com/hCnhrug.png "Добавить в избранное")
+
+<img src="https://i.imgur.com/hCnhrug.png" width="200" />
 
 Вкладка избранные новости. Отображает добавленные в избранное новости
-![newsimg](https://i.imgur.com/R4cc9nZ.png "Избранное")
 
+<img src="https://i.imgur.com/R4cc9nZ.png" width="200" />
 
-
+<img src="https://media.giphy.com/media/hz0ZEfVYw6K3WNRcW2/giphy.gif" width="200" />
 
 Ссылка на демо - https://media.giphy.com/media/hz0ZEfVYw6K3WNRcW2/giphy.gif (7FPS)
 
