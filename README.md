@@ -11,6 +11,11 @@
 НЕ реализовано:
  - "Show more" кнопка
 
+
+Ссылка на демо - https://media.giphy.com/media/hz0ZEfVYw6K3WNRcW2/giphy.gif (7FPS)
+
+
+
 Общий вид приложения:
 
 <img src="https://i.imgur.com/grIT7G3.png" width="200" />
@@ -23,7 +28,6 @@
 
 <img src="https://i.imgur.com/R4cc9nZ.png" width="200" />
 
-Ссылка на демо - https://media.giphy.com/media/hz0ZEfVYw6K3WNRcW2/giphy.gif (7FPS)
 
 
 
