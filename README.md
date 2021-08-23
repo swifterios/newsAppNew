@@ -18,15 +18,21 @@
 
 Общий вид приложения:
 
-<img src="https://i.imgur.com/grIT7G3.png" width="200" />
+<p align="center">
+  <img width="300" src="https://i.imgur.com/grIT7G3.png">
+</p>
 
 Добавление в избранные, нажатием кнопки
 
-<img src="https://i.imgur.com/hCnhrug.png" width="200" />
+<p align="center">
+  <img width="300" src="https://i.imgur.com/hCnhrug.png">
+</p>
 
 Вкладка избранные новости. Отображает добавленные в избранное новости
 
-<img src="https://i.imgur.com/R4cc9nZ.png" width="200" />
+<p align="center">
+  <img width="300" src="https://i.imgur.com/R4cc9nZ.png">
+</p>
 
 
 
